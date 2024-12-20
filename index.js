@@ -2,12 +2,15 @@ import express from 'express';
 import { google } from 'googleapis';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
 const oauth2Client = new google.auth.OAuth2(
-    'client_id',
-    'client_secret',
+    process.env.GOOGLE_CLIENT_ID,   //client_id
+    process.env.GOOGLE_CLIENT_SECRET,   //client_secret
     'http://localhost:3000/google/redirect'   //redirect url
 );
 
